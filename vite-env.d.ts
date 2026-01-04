@@ -1,5 +1,5 @@
-// Augment the global scope to include API_KEY in ProcessEnv
-// This assumes 'process' is already defined in the environment (e.g. by @types/node or other declarations)
+// This file ensures TypeScript recognizes the process.env.API_KEY variable
+// which is replaced by Vite during the build.
 
 export {};
 
