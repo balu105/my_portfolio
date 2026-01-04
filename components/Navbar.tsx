@@ -42,9 +42,9 @@ const Navbar: React.FC = () => {
     <>
       {/* Desktop Floating Navbar */}
       <div className={`fixed top-6 left-1/2 -translate-x-1/2 z-[1000] hidden md:block transition-all duration-300 w-auto`}>
-        <nav className={`glass-nav rounded-full px-8 py-4 flex items-center gap-8 shadow-2xl transition-all duration-300 ${isScrolled ? 'scale-95 py-3 shadow-[0_0_20px_rgba(2,6,23,0.8)]' : 'scale-100'}`}>
-           <a href="#hero" className="font-black text-xl tracking-tighter text-white mr-4 transition-all hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
-             K.C.<span className="text-brand-cyan-500 drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]">.</span>
+        <nav className={`glass-nav rounded-full px-8 py-4 flex items-center gap-8 shadow-2xl transition-all duration-300 ${isScrolled ? 'scale-95 py-3' : 'scale-100'}`}>
+           <a href="#hero" className="font-black text-xl tracking-tighter text-white mr-4">
+             K.C.<span className="text-brand-cyan-500">.</span>
            </a>
            <div className="flex items-center gap-1 bg-white/5 rounded-full p-1.5 border border-white/5">
             {navLinks.map((link) => (
@@ -54,8 +54,8 @@ const Navbar: React.FC = () => {
                 className={`
                   relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
                   ${activeSection === link.id 
-                    ? 'bg-brand-cyan-500 text-brand-dark shadow-[0_0_20px_rgba(34,211,238,0.5)] font-bold' 
-                    : 'text-brand-lavender hover:text-white hover:bg-white/5 hover:shadow-[0_0_10px_rgba(255,255,255,0.1)]'}
+                    ? 'bg-brand-cyan-500 text-brand-dark shadow-[0_0_20px_rgba(0,180,216,0.4)]' 
+                    : 'text-brand-lavender hover:text-white hover:bg-white/5'}
                 `}
               >
                 {link.name}
@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
            </div>
            <a 
              href="mailto:balajikc89@gmail.com" 
-             className="ml-4 px-5 py-2 bg-gradient-to-r from-brand-indigo to-brand-dark border border-brand-violet/30 rounded-full text-xs font-bold uppercase tracking-widest hover:border-brand-cyan-500 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-all"
+             className="ml-4 px-5 py-2 bg-gradient-to-r from-brand-indigo to-brand-dark border border-brand-violet/30 rounded-full text-xs font-bold uppercase tracking-widest hover:border-brand-cyan-500 transition-colors"
            >
              Hire Me
            </a>
@@ -72,12 +72,12 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Navbar */}
-      <header className={`md:hidden fixed top-0 inset-x-0 z-[1000] transition-all duration-300 ${isScrolled || isOpen ? 'glass-nav bg-brand-dark/90 shadow-[0_4px_20px_rgba(0,0,0,0.5)]' : 'bg-transparent'}`}>
+      <header className={`md:hidden fixed top-0 inset-x-0 z-[1000] transition-all duration-300 ${isScrolled || isOpen ? 'glass-nav bg-brand-dark/90' : 'bg-transparent'}`}>
         <div className="flex justify-between items-center p-6">
-          <h1 className="text-2xl font-black tracking-tighter text-white drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">
+          <h1 className="text-2xl font-black tracking-tighter text-white">
             K.C. <span className="text-brand-cyan-500">BALAJI</span>
           </h1>
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2 hover:text-brand-cyan-400 transition-colors">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
                 key={link.id}
                 href={`#${link.id}`}
                 onClick={() => setIsOpen(false)}
-                className={`text-lg font-medium p-4 rounded-xl transition-all ${activeSection === link.id ? 'bg-brand-cyan-500/10 text-brand-cyan-500 border border-brand-cyan-500/20 shadow-[0_0_15px_rgba(34,211,238,0.1)]' : 'text-brand-lavender hover:text-white'}`}
+                className={`text-lg font-medium p-4 rounded-xl transition-colors ${activeSection === link.id ? 'bg-brand-cyan-500/10 text-brand-cyan-500 border border-brand-cyan-500/20' : 'text-brand-lavender'}`}
               >
                 {link.name}
               </a>

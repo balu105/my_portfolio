@@ -91,33 +91,15 @@ export const CERTIFICATIONS: Certification[] = [
     link: 'https://github.com/balu105/Portfolio/blob/main/Guvi-python.jpg'
   },
   {
-    title: 'Python Programming',
-    provider: 'Skill India Digital Hub',
-    description: 'In this we have covered Python fundamentals, problem-solving, and small projects.',
-    link: 'https://github.com/balu105/Portfolio/blob/main/SIDH-python.jpg'
-  },
-  {
     title: 'Java Programming',
     provider: 'Infosys Springboard',
     description: 'Mastered Java syntax, loops, OOP concepts, and built mini console applications.',
     link: 'https://github.com/balu105/Portfolio/blob/main/java-Infosys.pdf'
   },
   {
-    title: 'Structured Query Language (SQL)',
-    provider: 'Sololearn',
-    description: 'Learned database queries, table management, joins, and data retrieval techniques.',
-    link: 'https://github.com/balu105/Portfolio/blob/main/sololearn-SQL.jpg'
-  },
-  {
-    title: 'Java Database Connectivity (JDBC)',
-    provider: 'Simplilearn',
-    description: 'Understood Java database connectivity, CRUD operations, and practical examples.',
-    link: 'https://github.com/balu105/Portfolio/blob/main/simplilearn-JDBC.jpg'
-  },
-  {
     title: 'Data Analytics',
     provider: 'Cisco Foundation',
-    description: 'Analyzed datasets, visualized results, and applied analytics techniques to real-world problems.',
+    description: 'Analyzed datasets, visualized results, and applied analytics techniques.',
     link: 'https://github.com/balu105/Portfolio/blob/main/cisco-data%20analysis.pdf'
   }
 ];
