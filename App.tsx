@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -15,6 +17,16 @@ import { EXPERIENCES, EDUCATION } from './constants';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Initialize Animate On Scroll
+    AOS.init({ 
+      duration: 800, 
+      once: true, 
+      offset: 50,
+      easing: 'ease-out-cubic'
+    });
+  }, []);
 
   return (
     <div className="antialiased selection:bg-brand-cyan-500 selection:text-brand-dark min-h-screen relative">
