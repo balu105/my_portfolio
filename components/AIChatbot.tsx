@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, Send, X, Bot, User, Loader2 } from 'lucide-react';
-import { GoogleGenAI } from '@google/genai';
+// import { GoogleAI } from '@google/genai';
 import { PROJECTS, EXPERIENCES, EDUCATION, CERTIFICATIONS, SKILLS } from '../constants';
 
 const AIChatbot: React.FC = () => {
@@ -42,17 +42,20 @@ const AIChatbot: React.FC = () => {
     setIsTyping(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: userMessage,
-        config: {
-          systemInstruction: portfolioContext,
-          temperature: 0.7,
-        },
-      });
-
-      const botResponse = response.text || "I'm sorry, I couldn't process that. Please ask something else about Balaji!";
+      // Mock response for now - replace with actual API call once import is fixed
+      const responses = [
+        "Thanks for asking! Balaji is a skilled developer with expertise in Python, React, and AI.",
+        "Balaji has worked on several projects including an Attendance Management System and Voice Grammar Corrector.",
+        "He's currently pursuing B.Tech in Computer Science & AI at St. John's College.",
+        "Balaji has completed internships at SmartInternz (ML) and APSSDC (AWS).",
+        "His technical skills include HTML5 (95%), CSS3 (90%), JavaScript (85%), and React (80%)."
+      ];
+      
+      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+      const botResponse = randomResponse;
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
       setMessages(prev => [...prev, { role: 'bot', text: botResponse }]);
     } catch (error) {
       console.error("AI Error:", error);
