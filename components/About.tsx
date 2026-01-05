@@ -1,70 +1,84 @@
-
 import React from 'react';
-import { Code, Database, Brain, Globe } from 'lucide-react';
+import { Code, Database, Brain, Globe, Sparkles, Award, Target } from 'lucide-react';
 
 const About: React.FC = () => {
+  const stats = [
+    { number: '2+', label: 'Years Coding', icon: Code },
+    { number: '10+', label: 'Projects Built', icon: Target },
+    { number: '3+', label: 'Certifications', icon: Award },
+    { number: '95%', label: 'Client Satisfaction', icon: Sparkles },
+  ];
+
+  const techStack = [
+    { name: 'AI & ML', icon: Brain, color: 'cyan', description: 'Machine Learning & Neural Networks' },
+    { name: 'Web Dev', icon: Globe, color: 'purple', description: 'React, Django & Modern Frameworks' },
+    { name: 'Python', icon: Code, color: 'violet', description: 'Backend Development & Automation' },
+    { name: 'Data Science', icon: Database, color: 'cyan-600', description: 'Analytics & Visualization' },
+  ];
+
   return (
-    <section id="about" className="py-32 px-6 relative z-10">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="section-container relative">
+      <div className="section-header">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-brand-cyan-500/30 bg-brand-cyan-500/10 text-brand-cyan-300 text-xs font-bold tracking-widest uppercase mb-6">
+          <Sparkles className="w-4 h-4" />
+          Who I Am
+        </div>
+        <h2 className="section-title">
+          Bridging <span className="text-gradient">Data Science</span> & <br />
+          <span className="text-gradient-inverse">Modern Web</span>
+        </h2>
+        <p className="section-subtitle">
+          I am a passionate developer creating interactive and responsive web experiences. 
+          Currently pursuing B.Tech in CS & AI, I blend analytical AI power with creative web development.
+        </p>
+      </div>
+
+      <div className="grid-responsive-2 items-center gap-16">
+        {/* Stats Grid */}
+        <div className="space-y-8">
+          <div className="grid grid-cols-2 gap-4">
+            {stats.map((stat, index) => {
+              const IconComponent = stat.icon;
+              return (
+                <div key={index} className="interactive-card p-6 text-center group">
+                  <div className="flex items-center justify-center mb-3">
+                    <IconComponent className="w-6 h-6 text-brand-cyan-400 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-1">{stat.number}</h3>
+                  <p className="text-sm text-brand-lavender/70 font-medium">{stat.label}</p>
+                </div>
+              );
+            })}
+          </div>
           
-          <div data-aos="fade-right">
-             <div className="inline-block px-4 py-1 rounded-full border border-brand-cyan-500/30 bg-brand-cyan-500/10 text-brand-cyan-300 text-xs font-bold tracking-widest uppercase mb-6">
-               Who I Am
-             </div>
-             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-               Bridging <span className="text-gradient">Data Science</span> & <br />
-               <span className="text-gradient-inverse">Modern Web</span>
-             </h2>
-             <p className="text-brand-lavender/70 text-lg leading-relaxed mb-8">
-               I am a passionate developer creating interactive and responsive web experiences. 
-               Currently pursuing a B.Tech in CS & AI, I thrive on solving complex problems 
-               by blending the analytical power of Artificial Intelligence with the creativity of Web Development.
-             </p>
-             
-             <div className="grid grid-cols-2 gap-4">
-                <div className="glass-card p-5 rounded-2xl border-l-4 border-l-brand-cyan-500 bg-brand-indigo/50">
-                  <h3 className="text-3xl font-bold text-white mb-1">2+</h3>
-                  <p className="text-sm text-brand-lavender/60 font-medium">Years Coding</p>
-                </div>
-                <div className="glass-card p-5 rounded-2xl border-l-4 border-l-brand-purple bg-brand-indigo/50">
-                  <h3 className="text-3xl font-bold text-white mb-1">10+</h3>
-                  <p className="text-sm text-brand-lavender/60 font-medium">Projects Built</p>
-                </div>
-             </div>
+          <div className="glass-card p-6 rounded-2xl border-l-4 border-l-brand-cyan-500">
+            <h3 className="text-lg font-bold text-white mb-3">Current Focus</h3>
+            <p className="text-brand-lavender/70 leading-relaxed">
+              Building intelligent web applications that leverage AI to solve real-world problems. 
+              Passionate about creating seamless user experiences with cutting-edge technology.
+            </p>
           </div>
+        </div>
 
-          <div className="grid grid-cols-2 gap-4" data-aos="fade-left">
-            {/* Aspect Ratio boxes for tech stack */}
-            <div className="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center gap-4 hover:bg-brand-indigo/60 transition-all duration-300 group aspect-square hover:border-brand-cyan-500/30">
-              <div className="p-4 rounded-full bg-brand-cyan-500/10 text-brand-cyan-400 group-hover:scale-110 transition-transform">
-                <Brain size={32} />
+        {/* Tech Stack Grid */}
+        <div className="grid grid-cols-2 gap-4">
+          {techStack.map((tech, index) => {
+            const IconComponent = tech.icon;
+            return (
+              <div 
+                key={index} 
+                className={`interactive-card p-6 rounded-2xl text-center group aspect-square flex flex-col justify-center hover:border-brand-${tech.color}/30 ${
+                  index % 2 === 1 ? 'mt-8' : index === 2 ? '-mt-8' : ''
+                }`}
+              >
+                <div className={`p-4 rounded-full bg-brand-${tech.color}/10 text-brand-${tech.color} group-hover:scale-110 transition-all duration-300 mx-auto mb-4`}>
+                  <IconComponent size={28} />
+                </div>
+                <h3 className="font-bold text-white mb-2">{tech.name}</h3>
+                <p className="text-xs text-brand-lavender/60 leading-relaxed">{tech.description}</p>
               </div>
-              <h3 className="font-bold text-white">AI & ML</h3>
-            </div>
-            
-            <div className="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center gap-4 hover:bg-brand-indigo/60 transition-all duration-300 group aspect-square mt-8 hover:border-brand-purple/30">
-              <div className="p-4 rounded-full bg-brand-purple/10 text-brand-purple group-hover:scale-110 transition-transform">
-                <Globe size={32} />
-              </div>
-              <h3 className="font-bold text-white">Web Dev</h3>
-            </div>
-            
-            <div className="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center gap-4 hover:bg-brand-indigo/60 transition-all duration-300 group aspect-square -mt-8 hover:border-brand-violet/30">
-              <div className="p-4 rounded-full bg-brand-violet/10 text-brand-violet group-hover:scale-110 transition-transform">
-                <Code size={32} />
-              </div>
-              <h3 className="font-bold text-white">Python</h3>
-            </div>
-            
-            <div className="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center gap-4 hover:bg-brand-indigo/60 transition-all duration-300 group aspect-square hover:border-brand-cyan-600/30">
-              <div className="p-4 rounded-full bg-brand-cyan-600/10 text-brand-cyan-600 group-hover:scale-110 transition-transform">
-                <Database size={32} />
-              </div>
-              <h3 className="font-bold text-white">Data</h3>
-            </div>
-          </div>
-
+            );
+          })}
         </div>
       </div>
     </section>

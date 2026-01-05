@@ -1,46 +1,105 @@
-
 import React from 'react';
 import { SKILLS } from '../constants';
+import { Code2, Zap, TrendingUp } from 'lucide-react';
 
 const Skills: React.FC = () => {
-  return (
-    <section id="skills" className="py-32 px-6 relative z-10">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16" data-aos="fade-up">
-           <span className="text-brand-cyan-500 font-bold tracking-widest uppercase text-xs mb-2 block">My Arsenal</span>
-           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Technical Proficiency</h2>
-        </div>
+  const getSkillLevel = (percentage: number) => {
+    if (percentage >= 90) return { label: 'Expert', color: 'brand-cyan-400', icon: Zap };
+    if (percentage >= 75) return { label: 'Advanced', color: 'brand-purple', icon: TrendingUp };
+    return { label: 'Intermediate', color: 'brand-violet', icon: Code2 };
+  };
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {SKILLS.map((skill, index) => (
+  return (
+    <section id="skills" className="section-container">
+      <div className="section-header">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-brand-cyan-500/30 bg-brand-cyan-500/10 text-brand-cyan-300 text-xs font-bold tracking-widest uppercase mb-6">
+          <Code2 className="w-4 h-4" />
+          My Arsenal
+        </div>
+        <h2 className="section-title">
+          Technical <span className="text-gradient">Proficiency</span>
+        </h2>
+        <p className="section-subtitle">
+          Mastering modern technologies to build exceptional digital experiences
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {SKILLS.map((skill, index) => {
+          const skillLevel = getSkillLevel(skill.percentage);
+          const IconComponent = skillLevel.icon;
+          
+          return (
             <div 
               key={index} 
-              className="glass-card p-6 rounded-2xl relative overflow-hidden group hover:border-brand-cyan-500/50 transition-all duration-300 hover:-translate-y-1"
-              data-aos="fade-up"
-              data-aos-delay={index * 50}
+              className="interactive-card p-6 rounded-2xl relative overflow-hidden group text-center"
             >
-              {/* Animated Bottom Bar */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-brand-dark/50">
-                <div 
-                  className="h-full bg-gradient-to-r from-brand-cyan-500 to-brand-purple transition-all duration-1000 ease-out"
-                  style={{ width: `${skill.percentage}%` }}
-                />
+              {/* Skill Icon */}
+              <div className={`w-12 h-12 mx-auto mb-4 rounded-full bg-${skillLevel.color}/10 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                <IconComponent className={`w-6 h-6 text-${skillLevel.color}`} />
               </div>
               
-              <div className="flex flex-col gap-2">
-                 <div className="flex justify-between items-start">
-                    <h3 className="text-lg font-bold text-white group-hover:text-brand-cyan-300 transition-colors">{skill.name}</h3>
-                    <span className="text-xs font-mono font-bold text-brand-cyan-500 bg-brand-cyan-500/10 px-2 py-1 rounded">{skill.percentage}%</span>
-                 </div>
-                 <div className="w-full bg-white/5 h-1.5 rounded-full mt-2 overflow-hidden">
-                    <div className="h-full bg-brand-cyan-500 rounded-full" style={{ width: `${skill.percentage}%` }}></div>
-                 </div>
+              {/* Skill Info */}
+              <h3 className="text-lg font-bold text-white mb-2 group-hover:text-brand-cyan-300 transition-colors">
+                {skill.name}
+              </h3>
+              
+              <div className="mb-4">
+                <span className={`text-xs font-bold text-${skillLevel.color} bg-${skillLevel.color}/10 px-3 py-1 rounded-full`}>
+                  {skillLevel.label}
+                </span>
               </div>
               
-              {/* Glow Effect */}
-              <div className="absolute -top-10 -right-10 w-24 h-24 bg-brand-cyan-500/10 rounded-full blur-2xl group-hover:bg-brand-cyan-500/20 transition-all"></div>
+              {/* Progress Circle */}
+              <div className="relative w-16 h-16 mx-auto mb-3">
+                <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 64 64">
+                  <circle
+                    cx="32"
+                    cy="32"
+                    r="28"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                    className="text-white/10"
+                  />
+                  <circle
+                    cx="32"
+                    cy="32"
+                    r="28"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                    strokeDasharray={`${2 * Math.PI * 28}`}
+                    strokeDashoffset={`${2 * Math.PI * 28 * (1 - skill.percentage / 100)}`}
+                    className={`text-${skillLevel.color} transition-all duration-1000 ease-out`}
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-sm font-bold text-white">{skill.percentage}%</span>
+                </div>
+              </div>
+              
+              {/* Animated Background */}
+              <div className={`absolute -top-10 -right-10 w-20 h-20 bg-${skillLevel.color}/5 rounded-full blur-2xl group-hover:bg-${skillLevel.color}/10 transition-all duration-500`}></div>
             </div>
-          ))}
+          );
+        })}
+      </div>
+      
+      {/* Skills Summary */}
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="glass-card p-6 rounded-2xl text-center border-l-4 border-l-brand-cyan-500">
+          <h3 className="text-2xl font-bold text-white mb-2">Frontend</h3>
+          <p className="text-brand-lavender/70 text-sm">React, HTML5, CSS3, JavaScript</p>
+        </div>
+        <div className="glass-card p-6 rounded-2xl text-center border-l-4 border-l-brand-purple">
+          <h3 className="text-2xl font-bold text-white mb-2">Backend</h3>
+          <p className="text-brand-lavender/70 text-sm">Python, Django, Data Analytics</p>
+        </div>
+        <div className="glass-card p-6 rounded-2xl text-center border-l-4 border-l-brand-violet">
+          <h3 className="text-2xl font-bold text-white mb-2">Cloud & AI</h3>
+          <p className="text-brand-lavender/70 text-sm">AWS, Machine Learning, Cloud Computing</p>
         </div>
       </div>
     </section>

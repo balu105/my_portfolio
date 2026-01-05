@@ -1,27 +1,32 @@
-
 import React, { useRef, useState } from 'react';
 import { PROJECTS } from '../constants';
-import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink, ArrowRight, Sparkles, Star } from 'lucide-react';
 
 const Projects: React.FC = () => {
   return (
-    <section className="py-32 px-6 relative z-10" id="projects">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6" data-aos="fade-up">
-           <div>
-              <span className="text-brand-cyan-500 font-bold tracking-widest uppercase text-xs mb-2 block">Portfolio</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Featured Works</h2>
-           </div>
-           <a href="https://github.com/balu105" target="_blank" className="flex items-center gap-2 text-brand-lavender hover:text-white transition-colors group">
-             View Github <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-           </a>
+    <section className="section-container" id="projects">
+      <div className="section-header">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-brand-cyan-500/30 bg-brand-cyan-500/10 text-brand-cyan-300 text-xs font-bold tracking-widest uppercase mb-6">
+          <Star className="w-4 h-4" />
+          Portfolio
         </div>
+        <h2 className="section-title">Featured <span className="text-gradient">Projects</span></h2>
+        <p className="section-subtitle">
+          Showcasing innovative solutions that blend creativity with cutting-edge technology
+        </p>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {PROJECTS.map((project, idx) => (
-            <ProjectCard key={idx} project={project} index={idx} />
-          ))}
-        </div>
+      <div className="grid-responsive gap-8 mb-12">
+        {PROJECTS.map((project, idx) => (
+          <ProjectCard key={idx} project={project} index={idx} />
+        ))}
+      </div>
+      
+      <div className="text-center">
+        <a href="https://github.com/balu105" target="_blank" className="btn-secondary inline-flex items-center gap-2 group">
+          View All Projects
+          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+        </a>
       </div>
     </section>
   );
@@ -47,13 +52,11 @@ const ProjectCard: React.FC<{ project: any; index: number }> = ({ project, index
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative rounded-3xl overflow-hidden glass-card border-white/5 transition-all duration-300 hover:scale-[1.01]"
-      data-aos="fade-up"
-      data-aos-delay={index * 100}
+      className="group relative rounded-2xl overflow-hidden glass-card border-white/5 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover-glow"
     >
-      {/* Spotlight Effect Overlay */}
+      {/* Spotlight Effect */}
       <div 
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 rounded-2xl"
         style={{
           opacity,
           background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(6, 182, 212, 0.15), transparent 40%)`
@@ -61,43 +64,54 @@ const ProjectCard: React.FC<{ project: any; index: number }> = ({ project, index
       />
       
       {/* Image Section */}
-      <div className="relative h-64 overflow-hidden border-b border-white/5">
+      <div className="relative h-48 sm:h-56 overflow-hidden">
         <img 
           src={project.image} 
           alt={project.title} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-brand-dark/40 group-hover:bg-brand-dark/20 transition-colors duration-500"></div>
-        <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
-           {project.tags?.map((tag: string, tIdx: number) => (
-              <span key={tIdx} className="px-3 py-1 bg-brand-dark/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase text-brand-cyan-300">
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent"></div>
+        
+        {/* Tags */}
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+           {project.tags?.slice(0, 2).map((tag: string, tIdx: number) => (
+              <span key={tIdx} className="px-3 py-1 glass-card text-xs font-bold text-brand-cyan-300 rounded-full">
                 {tag}
               </span>
            ))}
         </div>
+        
+        {/* Project Number */}
+        <div className="absolute top-4 right-4 w-8 h-8 glass-card rounded-full flex items-center justify-center text-xs font-bold text-brand-cyan-400">
+          {(index + 1).toString().padStart(2, '0')}
+        </div>
       </div>
 
       {/* Content Section */}
-      <div className="p-8 relative z-10">
-        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-brand-cyan-400 transition-colors">{project.title}</h3>
-        <p className="text-brand-lavender text-sm leading-relaxed mb-6">{project.description}</p>
+      <div className="p-6 relative z-10">
+        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-brand-cyan-400 transition-colors">
+          {project.title}
+        </h3>
+        <p className="text-brand-lavender/70 text-sm leading-relaxed mb-6 line-clamp-2">
+          {project.description}
+        </p>
         
-        <div className="flex gap-4">
+        <div className="flex gap-3">
           <a 
             href={project.demo} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 py-3 bg-brand-cyan-500 hover:bg-brand-cyan-400 text-brand-dark font-bold rounded-xl transition-all shadow-lg shadow-brand-cyan-500/20"
+            className="flex-1 btn-primary text-sm py-2 flex items-center justify-center gap-2"
           >
-            <ExternalLink size={16} /> Live Demo
+            <ExternalLink size={14} /> Demo
           </a>
           <a 
             href={project.github} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="px-5 flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-xl transition-all"
+            className="px-4 py-2 glass-card border border-white/10 hover:border-brand-cyan-500/30 text-white rounded-full transition-all flex items-center justify-center"
           >
-            <Github size={18} />
+            <Github size={16} />
           </a>
         </div>
       </div>
