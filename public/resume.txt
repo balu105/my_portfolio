@@ -1,0 +1,72 @@
+KANDANATHI CHITTEM BALAJI
+Full Stack Developer | AI/ML Engineer
+
+Contact Information:
+Email: balajikc89@gmail.com
+Phone: +91 91821 44783
+Location: Yemmiganur, Andhra Pradesh, India
+LinkedIn: linkedin.com/in/kandanathi-chittem-balaji
+GitHub: github.com/balu105
+
+PROFESSIONAL SUMMARY
+B.Tech Computer Science & AI student with 2+ years of hands-on experience in Full Stack Development, Machine Learning, and Cloud Technologies. Proven track record with 10+ projects and industry internships at SmartInternz and APSSDC.
+
+TECHNICAL SKILLS
+• Languages: Python (80%), JavaScript (85%), HTML5 (95%), CSS3 (90%)
+• Frameworks: React, Django, REST APIs
+• Technologies: Machine Learning, AWS Cloud, Data Analytics
+• Tools: Git/GitHub, Jupyter, VS Code, Docker
+
+PROFESSIONAL EXPERIENCE
+
+Machine Learning Intern | SmartInternz | Aug 2025 - Oct 2025
+• Built and trained 3+ ML models achieving 85%+ accuracy rates
+• Implemented data preprocessing pipelines reducing training time by 40%
+• Collaborated with senior developers on model optimization techniques
+• Technologies: Python, Scikit-Learn, Pandas, NumPy, Jupyter
+
+AWS Cloud Intern | APSSDC | Jun 2024 - July 2024
+• Successfully completed File Storage and Sharing project using AWS S3
+• Gained proficiency in AWS EC2, S3, and Lambda services
+• Implemented secure cloud storage solutions with proper access controls
+• Technologies: AWS, Cloud Computing, S3, EC2, Lambda, IAM
+
+EDUCATION
+B.Tech Computer Science & AI | St. John's College of Engineering | 2022-2026
+CGPA: 7.5/10
+
+Intermediate (MPC) | Govt Junior College, Yemmiganur | 2020-2022
+Score: 88.1%
+
+KEY PROJECTS
+
+1. Attendance Management System
+   • Django web application reducing manual tracking by 80%
+   • Features: Automated reporting, user authentication, data visualization
+   • Tech Stack: Django, Python, JavaScript, HTML/CSS
+
+2. Voice Grammar Corrector
+   • AI-powered real-time speech processing application
+   • Improved communication accuracy by 75%
+   • Tech Stack: Python, AI/ML, WebSpeech API
+
+3. Employee Performance Prediction
+   • Machine learning model predicting performance with 85% accuracy
+   • Data analysis and visualization dashboard
+   • Tech Stack: Python, Scikit-Learn, Pandas, Plotly
+
+4. Data Analysis Dashboard
+   • Interactive dashboard improving data insights by 60%
+   • Real-time data visualization and analytics
+   • Tech Stack: Python, Pandas, Plotly, Dashboard frameworks
+
+CERTIFICATIONS
+• Python Programming - Guvi | HCL
+• Java Programming - Infosys Springboard
+• Data Analytics - Cisco Foundation
+
+ACHIEVEMENTS
+• 10+ successful project deliveries
+• 3+ industry-recognized certifications
+• 95% code quality score
+• Strong problem-solving and analytical skills

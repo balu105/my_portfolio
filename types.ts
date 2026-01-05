@@ -13,6 +13,9 @@ export interface Experience {
   company: string;
   period: string;
   description: string;
+  location?: string;
+  achievements?: string[];
+  skills?: string[];
 }
 
 export interface Education {
